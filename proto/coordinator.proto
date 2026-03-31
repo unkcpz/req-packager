@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package req_packager.v1;
+package coordinator.v1;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/struct.proto";

@@ -534,12 +534,12 @@ pub mod dataset_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.DatasetService/BrowseDataset",
+                "/coordinator.v1.DatasetService/BrowseDataset",
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
-                    GrpcMethod::new("req_packager.v1.DatasetService", "BrowseDataset"),
+                    GrpcMethod::new("coordinator.v1.DatasetService", "BrowseDataset"),
                 );
             self.inner.server_streaming(req, path, codec).await
         }
@@ -562,13 +562,13 @@ pub mod dataset_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.DatasetService/BrowseDatasetByUrl",
+                "/coordinator.v1.DatasetService/BrowseDatasetByUrl",
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
                     GrpcMethod::new(
-                        "req_packager.v1.DatasetService",
+                        "coordinator.v1.DatasetService",
                         "BrowseDatasetByUrl",
                     ),
                 );
@@ -696,7 +696,7 @@ pub mod dataset_service_server {
         }
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             match req.uri().path() {
-                "/req_packager.v1.DatasetService/BrowseDataset" => {
+                "/coordinator.v1.DatasetService/BrowseDataset" => {
                     #[allow(non_camel_case_types)]
                     struct BrowseDatasetSvc<T: DatasetService>(pub Arc<T>);
                     impl<
@@ -742,7 +742,7 @@ pub mod dataset_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/req_packager.v1.DatasetService/BrowseDatasetByUrl" => {
+                "/coordinator.v1.DatasetService/BrowseDatasetByUrl" => {
                     #[allow(non_camel_case_types)]
                     struct BrowseDatasetByUrlSvc<T: DatasetService>(pub Arc<T>);
                     impl<
@@ -828,7 +828,7 @@ pub mod dataset_service_server {
         }
     }
     /// Generated gRPC service name
-    pub const SERVICE_NAME: &str = "req_packager.v1.DatasetService";
+    pub const SERVICE_NAME: &str = "coordinator.v1.DatasetService";
     impl<T> tonic::server::NamedService for DatasetServiceServer<T> {
         const NAME: &'static str = SERVICE_NAME;
     }
@@ -940,11 +940,11 @@ pub mod tool_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.ToolService/GetTool",
+                "/coordinator.v1.ToolService/GetTool",
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("req_packager.v1.ToolService", "GetTool"));
+                .insert(GrpcMethod::new("coordinator.v1.ToolService", "GetTool"));
             self.inner.unary(req, path, codec).await
         }
         /// Find tools from the file list input provided, and maybe some information from user profile.
@@ -965,11 +965,11 @@ pub mod tool_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.ToolService/FindTools",
+                "/coordinator.v1.ToolService/FindTools",
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("req_packager.v1.ToolService", "FindTools"));
+                .insert(GrpcMethod::new("coordinator.v1.ToolService", "FindTools"));
             self.inner.unary(req, path, codec).await
         }
         pub async fn browse_tools(
@@ -989,11 +989,11 @@ pub mod tool_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.ToolService/BrowseTools",
+                "/coordinator.v1.ToolService/BrowseTools",
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("req_packager.v1.ToolService", "BrowseTools"));
+                .insert(GrpcMethod::new("coordinator.v1.ToolService", "BrowseTools"));
             self.inner.server_streaming(req, path, codec).await
         }
     }
@@ -1115,7 +1115,7 @@ pub mod tool_service_server {
         }
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             match req.uri().path() {
-                "/req_packager.v1.ToolService/GetTool" => {
+                "/coordinator.v1.ToolService/GetTool" => {
                     #[allow(non_camel_case_types)]
                     struct GetToolSvc<T: ToolService>(pub Arc<T>);
                     impl<
@@ -1160,7 +1160,7 @@ pub mod tool_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/req_packager.v1.ToolService/FindTools" => {
+                "/coordinator.v1.ToolService/FindTools" => {
                     #[allow(non_camel_case_types)]
                     struct FindToolsSvc<T: ToolService>(pub Arc<T>);
                     impl<
@@ -1205,7 +1205,7 @@ pub mod tool_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/req_packager.v1.ToolService/BrowseTools" => {
+                "/coordinator.v1.ToolService/BrowseTools" => {
                     #[allow(non_camel_case_types)]
                     struct BrowseToolsSvc<T: ToolService>(pub Arc<T>);
                     impl<
@@ -1286,7 +1286,7 @@ pub mod tool_service_server {
         }
     }
     /// Generated gRPC service name
-    pub const SERVICE_NAME: &str = "req_packager.v1.ToolService";
+    pub const SERVICE_NAME: &str = "coordinator.v1.ToolService";
     impl<T> tonic::server::NamedService for ToolServiceServer<T> {
         const NAME: &'static str = SERVICE_NAME;
     }
@@ -1401,12 +1401,12 @@ pub mod dataplayer_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.DataplayerService/LaunchTool",
+                "/coordinator.v1.DataplayerService/LaunchTool",
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
-                    GrpcMethod::new("req_packager.v1.DataplayerService", "LaunchTool"),
+                    GrpcMethod::new("coordinator.v1.DataplayerService", "LaunchTool"),
                 );
             self.inner.unary(req, path, codec).await
         }
@@ -1428,11 +1428,11 @@ pub mod dataplayer_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.DataplayerService/Query",
+                "/coordinator.v1.DataplayerService/Query",
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("req_packager.v1.DataplayerService", "Query"));
+                .insert(GrpcMethod::new("coordinator.v1.DataplayerService", "Query"));
             self.inner.unary(req, path, codec).await
         }
         /// Get the artifact from id.
@@ -1453,12 +1453,12 @@ pub mod dataplayer_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.DataplayerService/GetArtifact",
+                "/coordinator.v1.DataplayerService/GetArtifact",
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
-                    GrpcMethod::new("req_packager.v1.DataplayerService", "GetArtifact"),
+                    GrpcMethod::new("coordinator.v1.DataplayerService", "GetArtifact"),
                 );
             self.inner.unary(req, path, codec).await
         }
@@ -1480,12 +1480,12 @@ pub mod dataplayer_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.DataplayerService/MonitorStatus",
+                "/coordinator.v1.DataplayerService/MonitorStatus",
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
-                    GrpcMethod::new("req_packager.v1.DataplayerService", "MonitorStatus"),
+                    GrpcMethod::new("coordinator.v1.DataplayerService", "MonitorStatus"),
                 );
             self.inner.server_streaming(req, path, codec).await
         }
@@ -1506,12 +1506,12 @@ pub mod dataplayer_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.DataplayerService/GetStatus",
+                "/coordinator.v1.DataplayerService/GetStatus",
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
-                    GrpcMethod::new("req_packager.v1.DataplayerService", "GetStatus"),
+                    GrpcMethod::new("coordinator.v1.DataplayerService", "GetStatus"),
                 );
             self.inner.unary(req, path, codec).await
         }
@@ -1531,11 +1531,11 @@ pub mod dataplayer_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/req_packager.v1.DataplayerService/Drop",
+                "/coordinator.v1.DataplayerService/Drop",
             );
             let mut req = request.into_request();
             req.extensions_mut()
-                .insert(GrpcMethod::new("req_packager.v1.DataplayerService", "Drop"));
+                .insert(GrpcMethod::new("coordinator.v1.DataplayerService", "Drop"));
             self.inner.unary(req, path, codec).await
         }
     }
@@ -1682,7 +1682,7 @@ pub mod dataplayer_service_server {
         }
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             match req.uri().path() {
-                "/req_packager.v1.DataplayerService/LaunchTool" => {
+                "/coordinator.v1.DataplayerService/LaunchTool" => {
                     #[allow(non_camel_case_types)]
                     struct LaunchToolSvc<T: DataplayerService>(pub Arc<T>);
                     impl<
@@ -1727,7 +1727,7 @@ pub mod dataplayer_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/req_packager.v1.DataplayerService/Query" => {
+                "/coordinator.v1.DataplayerService/Query" => {
                     #[allow(non_camel_case_types)]
                     struct QuerySvc<T: DataplayerService>(pub Arc<T>);
                     impl<
@@ -1772,7 +1772,7 @@ pub mod dataplayer_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/req_packager.v1.DataplayerService/GetArtifact" => {
+                "/coordinator.v1.DataplayerService/GetArtifact" => {
                     #[allow(non_camel_case_types)]
                     struct GetArtifactSvc<T: DataplayerService>(pub Arc<T>);
                     impl<
@@ -1818,7 +1818,7 @@ pub mod dataplayer_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/req_packager.v1.DataplayerService/MonitorStatus" => {
+                "/coordinator.v1.DataplayerService/MonitorStatus" => {
                     #[allow(non_camel_case_types)]
                     struct MonitorStatusSvc<T: DataplayerService>(pub Arc<T>);
                     impl<
@@ -1865,7 +1865,7 @@ pub mod dataplayer_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/req_packager.v1.DataplayerService/GetStatus" => {
+                "/coordinator.v1.DataplayerService/GetStatus" => {
                     #[allow(non_camel_case_types)]
                     struct GetStatusSvc<T: DataplayerService>(pub Arc<T>);
                     impl<
@@ -1910,7 +1910,7 @@ pub mod dataplayer_service_server {
                     };
                     Box::pin(fut)
                 }
-                "/req_packager.v1.DataplayerService/Drop" => {
+                "/coordinator.v1.DataplayerService/Drop" => {
                     #[allow(non_camel_case_types)]
                     struct DropSvc<T: DataplayerService>(pub Arc<T>);
                     impl<
@@ -1989,7 +1989,7 @@ pub mod dataplayer_service_server {
         }
     }
     /// Generated gRPC service name
-    pub const SERVICE_NAME: &str = "req_packager.v1.DataplayerService";
+    pub const SERVICE_NAME: &str = "coordinator.v1.DataplayerService";
     impl<T> tonic::server::NamedService for DataplayerServiceServer<T> {
         const NAME: &'static str = SERVICE_NAME;
     }

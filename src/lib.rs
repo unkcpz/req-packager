@@ -1,5 +1,5 @@
 pub mod grpc {
-    include!("./generated/req_packager.v1.rs");
+    include!("./generated/coordinator.v1.rs");
 }
 use futures_util::{StreamExt, TryStreamExt};
 use jsonwebtoken::{encode, EncodingKey, Header};
