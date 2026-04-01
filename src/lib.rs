@@ -102,7 +102,7 @@ impl DatasetService for DataRelayer {
         request: Request<BrowseDatasetByUrlRequest>,
     ) -> Result<Response<Self::BrowseDatasetByUrlStream>, Status> {
         // TODO: tracing
-        println!("Got a request: {request:?}");
+        tracing::info!("Got a request to browser dataset: {request:?}");
         let (tx, rx) = mpsc::channel(16);
         let data_source = Arc::clone(&self.data_source);
 
@@ -286,7 +286,7 @@ impl DatasetService for DataRelayer {
         request: Request<BrowseDatasetRequest>,
     ) -> Result<Response<Self::BrowseDatasetStream>, Status> {
         // TODO: tracing
-        println!("Got a request: {request:?}");
+        tracing::info!("Got a request to browser dataset: {request:?}");
         let (tx, rx) = mpsc::channel(16);
         let data_source = Arc::clone(&self.data_source);
 
@@ -797,9 +797,10 @@ impl DataplayerService for Dataplayer {
         &self,
         req: Request<LaunchToolRequest>,
     ) -> Result<Response<LaunchToolResponse>, Status> {
+        tracing::info!("Got a request to launch tool: {req:?}");
         let user = get_user_from_token(&req).unwrap();
         let req = req.get_ref();
-        let id = &req.tool_id.clone(); // FIXME: DONTPANIC
+        let id = &req.tool_id;
         let slots_mapping = &req.slots_mapping;
 
         let tool_meta = self.tool_source.get_tool(id).await.unwrap();
